@@ -1,3 +1,5 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" class="no-js" lang="zxx">
+
 <div th:fragment="header">
 
     <header  class="header header-transparent header-sticky  d-lg-block d-none">
@@ -20,8 +22,6 @@
                                     <li><a href="/products">Продукты</a></li>
                                     <li><a href="/about">О нас</a></li>
                                     <li><a href="/faq">FAQ</a></li>
-                                    <li><a href="/contacts">Контакты</a></li>
-
                                 </ul>
                             </nav>
                         </div>
@@ -31,12 +31,11 @@
                         <!--Header Search And Mini Cart Area Start-->
                         <div class="header-search-cart-area">
                             <ul>
-
-                                <li class="currency-menu"><a href="/login"><i class="flaticon-user"></i></a>
-                                    <!--Crunccy dropdown-->
-
-                                </li>
-
+                                <li th:if="${#request.isUserInRole('ADMIN')} or ${#request.isUserInRole('USER')}">[[${#httpServletRequest.remoteUser}]]</li>
+                                <form th:if="${#request.isUserInRole('ADMIN')} or ${#request.isUserInRole('USER')}" th:action="@{/logout}" method="post">
+                                    <button type="submit">Выйти</button>
+                                </form>
+                                 <li th:if="${not #request.isUserInRole('ADMIN')} and ${not #request.isUserInRole('USER')}" class="currency-menu"><a href="/login"><i class="flaticon-user"></i></a></li>
                             </ul>
                         </div>
                         <!--Header Search And Mini Cart Area End-->

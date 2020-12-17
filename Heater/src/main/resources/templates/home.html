@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="assets/css/vendor/helper.css">
     <link rel="stylesheet" href="assets/css/plugins/plugins.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/iconfont.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/helper.css">
+    <link rel="stylesheet" href="/assets/css/plugins/plugins.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <!-- Modernizr JS -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
@@ -34,17 +39,11 @@
                 <div class="container">
                     <div  class="row">
                         <div class="col-12">
-                            <div th:if="${#request.isUserInRole('USER')}" > Has Authority USER </div>
-                            <div th:if="${#request.isUserInRole('ADMIN')}" > Has Authority ADMIN </div>
                             <!--Hero Content start-->
                             <div class="hero-content-2 center">
-
                                 <h2>HeateR<br>  водонагреватели мечты</h2>
-
-
                             </div>
                             <!--Hero Content end-->
-
                         </div>
                     </div>
                 </div>
@@ -67,7 +66,7 @@
             <div class="row">
                 <div class="col">
                     <div class="section-title text-center mb-15">
-                        <h2>Hello [[${#httpServletRequest.remoteUser}]]! Популярные нагреватели</h2>
+                        <h2>Популярные нагреватели</h2>
                     </div>
                     <div class="product-tab mb-50 mb-sm-30 mb-xs-20">
                     </div>
@@ -87,7 +86,8 @@
                                 <div class="product-content">
                                     <h3 th:text="${el.name}" class="title"> <a th:href="'/product/' + ${el.id}"></a></h3>
                                     <p  class="product-price"><span th:text="${el.price} + Byn" class="discounted-price"></span></p>
-                                    <p>Click <a th:href="@{/user}">here</a> to see a greeting.</p>
+                                    <button th:if="${#request.isUserInRole('ADMIN')}" >Удалить</button>
+                                    <button th:if="${#request.isUserInRole('ADMIN')}" >Редактировать</button>
                                 </div>
                             </div>
                             <!--  Single Grid product End -->
@@ -97,7 +97,13 @@
                     </div>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col">
+                    <div class="section-title text-center mb-15">
+                        <button th:if="${#request.isUserInRole('ADMIN')}" class="btn" type="submit">Добавить продукцию</button>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

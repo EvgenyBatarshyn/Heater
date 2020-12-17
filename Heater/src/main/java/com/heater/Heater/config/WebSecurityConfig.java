@@ -1,8 +1,7 @@
 package com.heater.Heater.config;
-
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -18,6 +17,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/**/*.css", "/**/*.js", "/**/*.scss",
+                        "/**/*.png", "/**/*.jpg","/**/*.svg", "/**/*.gif",
+                        "/**/*.woff", "/**/*.woff2", "/**/*.ttf").permitAll()
                 .antMatchers("/", "/home").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -26,9 +28,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll();
-    }
+                 .logoutSuccessUrl("/");
 
+
+
+    }
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
