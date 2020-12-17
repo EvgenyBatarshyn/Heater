@@ -43,4 +43,16 @@ public class MainController {
     }
 
 
+    @GetMapping("/admin")
+    public String admin() {
+        return "home";
+    }
+
+    @GetMapping("/user")
+    public String user() {
+        return "home";
+    }
+
+
+
 }
