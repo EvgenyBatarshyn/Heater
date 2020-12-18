@@ -56,25 +56,25 @@
 				<div class="panel-heading">Продукция</div>
 				<div class="panel-body">
 					<table data-toggle="table" data-url="tables/data2.json" >
-						<thead>
+						<thead th:each="el : ${wh}">
 						<tr>
 							<th data-field="id" data-align="right">Id</th>
 							<th data-field="name">Название</th>
 							<th data-field="price">Цена</th>
-							<th data-field="price">Описание</th>
 							<th data-field="price">Картинка</th>
 							<th data-field="price"></th>
 							<th data-field="price"></th>
 						</tr>
-						<tr th:each="el : ${wh}">
+						<tr >
 							<td th:text="${el.id}"></td>
 							<td th:text="${el.name}"></td>
 							<td th:text="${el.price}"></td>
-							<td th:text="${el.description}"></td>
 							<td th:text="${el.photo}"></td>
 							<td><a th:href="'/product/' + ${el.id} + '/edit/'">Изменить</a>></td>
 							<td><form method="post" th:action="'/product/' + ${el.id} + '/remove/'"><button type="submit">Удалить</button>></form></td>
-
+							<tr>
+								<td th:text="${el.description}"></td>
+							</tr>
 						</tr>
 						</thead>
 					</table>
