@@ -16,11 +16,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/**/*.css", "/**/*.js", "/**/*.scss",
                         "/**/*.png", "/**/*.jpg","/**/*.svg", "/**/*.gif",
                         "/**/*.woff", "/**/*.woff2", "/**/*.ttf").permitAll()
-                .antMatchers("/", "/home").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -39,13 +39,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails user =
                 User.withDefaultPasswordEncoder()
                         .username("user")
-                        .password("password")
+                        .password("p")
                         .roles("USER")
                         .build();
         UserDetails admin =
                 User.withDefaultPasswordEncoder()
                         .username("admin")
-                        .password("password")
+                        .password("p")
                         .roles("ADMIN")
                         .build();
 

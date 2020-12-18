@@ -116,7 +116,9 @@
                                     <div class="single-product-quantity">
                                         <form class="add-quantity" action="#">
                                             <div class="product-quantity">
-                                                <input value="1" type="number">
+                                                <label>
+                                                    <input value="1" type="number">
+                                                </label>
                                             </div>
                                             <div class="add-to-link">
                                                 <button class="btn"><i class="fa fa-shopping-bag"></i>add to cart</button>
@@ -201,9 +203,9 @@
                                                     <p>Good Product</p>
                                                 </div>
                                             </div>
-
-                                </li>
-                                </ul>
+                                         </li>
+                                     </ul>
+                                </div>
                                 <div class="review-form-wrapper">
                                     <div class="review-form">
                                         <span class="comment-reply-title">Add a review </span>
@@ -226,11 +228,15 @@
                                             <div class="input-element">
                                                 <div class="comment-form-comment">
                                                     <label>Comment</label>
-                                                    <textarea name="message" cols="40" rows="8"></textarea>
+                                                    <label>
+                                                        <textarea name="message" cols="40" rows="8"></textarea>
+                                                    </label>
                                                 </div>
                                                 <div class="review-comment-form-author">
                                                     <label>Name </label>
-                                                    <input required="required" type="text">
+                                                    <label>
+                                                        <input required="required" type="text">
+                                                    </label>
                                                 </div>
                                                 <div class="review-comment-form-email">
                                                     <label>Email </label>
@@ -653,7 +659,7 @@
 </div>
 <!-- Newsletter Section End -->
 <div th:insert="blocks/footer1 :: footer"/>
-</div>
+
 
 <!-- Placed js at the end of the document so the pages load faster -->
 

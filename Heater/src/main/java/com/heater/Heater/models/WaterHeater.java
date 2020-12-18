@@ -13,7 +13,7 @@ public class WaterHeater {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name, description;
+    private String name, description, photo;
     private int price;
 
     public Long getId() {
@@ -40,11 +40,29 @@ public class WaterHeater {
         this.description = description;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     public int getPrice() {
         return price;
     }
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public WaterHeater() {
+    }
+
+    public WaterHeater(String name, String description, int price, String photo) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.photo = photo;
     }
 }

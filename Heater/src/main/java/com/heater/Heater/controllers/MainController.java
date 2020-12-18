@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -53,6 +55,24 @@ public class MainController {
         return "home";
     }
 
+    @GetMapping("/adminpage")
+    public String admin(Model model) {
+        Iterable<WaterHeater> waterHeaters = waterHeaterRepository.findAll();
+        model.addAttribute("wh",waterHeaters);
+        return "tables";
+    }
+
+    @GetMapping("/addpage")
+    public String addpage(Model model) {
+        return "forms";
+    }
+
+    @PostMapping("/addpage/add")
+    public String addproduct( @RequestParam String name, @RequestParam String description, @RequestParam int price, @RequestParam String photo,  Model model) {
+        WaterHeater post = new WaterHeater(name,  description, price, photo);
+        waterHeaterRepository.save(post);
+        return "redirect:/addpage";
+    }
 
 
 }
