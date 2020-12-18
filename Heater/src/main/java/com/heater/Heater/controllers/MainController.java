@@ -74,5 +74,32 @@ public class MainController {
         return "redirect:/addpage";
     }
 
+    @GetMapping("/product/{id}/edit")
+    public String edit(@PathVariable(value = "id") long id, Model model) {
+        Optional<WaterHeater> waterHeater = waterHeaterRepository.findById(id);
+        ArrayList<WaterHeater> res = new ArrayList<>();
+        waterHeater.ifPresent(res::add);
+        model.addAttribute("product",res);
+        return "edit";
+    }
+
+    @PostMapping("/product/{id}/edit")
+    public String productedit( @PathVariable(value="id") long id,@RequestParam String name, @RequestParam String description, @RequestParam int price, @RequestParam String photo,  Model model) {
+        WaterHeater post = waterHeaterRepository.findById(id).orElseThrow();
+        post.setName(name);
+        post.setDescription(description);
+        post.setPrice(price);
+        post.setPhoto(photo);
+        waterHeaterRepository.save(post);
+        return "redirect:/adminpage";
+    }
+
+    @PostMapping("/product/{id}/remove")
+    public String productremove( @PathVariable(value="id") long id,  Model model) {
+        WaterHeater post = waterHeaterRepository.findById(id).orElseThrow();
+        waterHeaterRepository.delete(post);
+        return "redirect:/adminpage";
+    }
+
 
 }
