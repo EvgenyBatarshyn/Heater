@@ -31,7 +31,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><span>Heade</span>R</a>
+			<a class="navbar-brand" href="/"><span>Heade</span>R</a>
 		</div>
 
 	</div><!-- /.container-fluid -->
@@ -71,9 +71,10 @@
 							<td th:text="${el.name}"></td>
 							<td th:text="${el.price}"></td>
 							<td th:text="${el.description}"></td>
-							<td>1.</td>
-							<td>Удалить</td>
-							<td>Изменить</td>
+							<td th:text="${el.photo}"></td>
+							<td><a th:href="'/product/' + ${el.id} + '/edit/'">Изменить</a>></td>
+							<td><form method="post" th:action="'/product/' + ${el.id} + '/remove/'"><button type="submit">Удалить</button>></form></td>
+
 						</tr>
 						</thead>
 					</table>

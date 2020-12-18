@@ -33,10 +33,10 @@
                 <div class="col">
 
                     <div class="page-banner text-left">
-                        <h2>Login Register</h2>
+                        <h2>Авторизация</h2>
                         <ul class="page-breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li>Login Register</li>
+                            <li><a href="/">Главная</a></li>
+                            <li>Авторизация</li>
                         </ul>
                     </div>
 
@@ -53,34 +53,27 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="customer-login-register">
                         <div class="form-login-title">
-                            <h2>Login</h2>
+                            <h2>Авторизация</h2>
                         </div>
                         <div class="login-form">
                             <form th:action="@{/login}" method="post">
                                 <div class="form-fild">
-                                    <p><label>Username or email address <span class="required">*</span></label></p>
+                                    <p><label>Имя пользователя<span class="required">*</span></label></p>
                                     <label>
                                         <input name="username" type="text">
                                     </label>
                                 </div>
                                 <div class="form-fild">
-                                    <p><label>Password <span class="required">*</span></label></p>
+                                    <p><label>Пароль<span class="required">*</span></label></p>
                                     <label>
                                         <input name="password"  type="password">
                                     </label>
                                 </div>
                                 <div class="login-submit">
-                                    <button type="submit" class="btn">Login</button>
-                                    <label>
-                                        <input class="checkbox" name="rememberme" value="" type="checkbox">
-                                        <span>Remember me</span>
-                                    </label>
+                                    <button type="submit" class="btn">Войти</button>
                                 </div>
                                 <div th:if="${param.error}" class="lost-password">
-                                    <a>Error</a>
-                                </div>
-                                <div class="lost-password">
-                                    <a href="#">Lost your password?</a>
+                                    <a>Ошибка авторизации</a>
                                 </div>
                             </form>
                         </div>
@@ -98,16 +91,15 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="newsletter-content">
-                        <h2>Subscribe Our Newsletter</h2>
-                        <p>Subscribe Today for free and save 10% on your first purchase.</p>
+                        <h2>Подпишитесь на рассылку</h2>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="newsletter-wrap">
                         <div class="newsletter-form">
                             <form id="mc-form" class="mc-form">
-                                <input type="email" placeholder="Enter Your Email Address Here..." required>
-                                <button type="submit" value="submit">SUBSCRIBE!</button>
+                                <input type="email" placeholder="Ваш e-mail" required>
+                                <button type="submit" value="submit">Подписаться!</button>
                             </form>
 
                         </div>

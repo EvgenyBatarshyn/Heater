@@ -80,30 +80,20 @@
                             <div class="single-grid-product mb-40">
                                 <div class="product-image">
                                     <a th:href="'/product/'+ ${el.id}">
-                                        <img src="./assets/images/product/product-1.jpg" class="img-fluid" alt="">
+                                        <img th:src="'./assets/images/product/' +${el.photo}" class="img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="product-content">
                                     <h3 th:text="${el.name}" class="title"> <a th:href="'/product/' + ${el.id}"></a></h3>
                                     <p  class="product-price"><span th:text="${el.price} + Byn" class="discounted-price"></span></p>
-                                    <button th:if="${#request.isUserInRole('ADMIN')}" >Удалить</button>
-                                    <button th:if="${#request.isUserInRole('ADMIN')}" >Редактировать</button>
-                                </div>
+                                     </div>
                             </div>
                             <!--  Single Grid product End -->
                         </div>
-
-
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <div class="section-title text-center mb-15">
-                        <button th:if="${#request.isUserInRole('ADMIN')}" class="btn" type="submit">Добавить продукцию</button>
-                    </div>
-                </div>
-            </div>
+            
 
         </div>
     </div>
